@@ -1,0 +1,40 @@
+# copilot-to-capability-kit
+
+**Measure, brief, gate and evidence for teams that build with AI agents — in your own repository, in
+a day, with no service to run.**
+
+AI made writing code cheap and left checking it expensive. This kit is the engineering half of the
+series *From Personal Copilot to Organizational Capability* and its delivery paper, *Organizing for
+Agentic Delivery* (links added when published): four small parts, each usable on its own, that run in
+git and CI. The CLI is `whosigns`.
+
+| Part | Command / artifact | Answers | Paper § |
+|---|---|---|---|
+| **Measure** | `whosigns measure` | Did delivery change as AI adoption rose? PR size, time in review, merges with no human review, lead time, change failure rate — per team, before vs after | §1–§4, §9 |
+| **Brief** | `brief.md` template · `whosigns lint` · agent instructions | Is this brief precise enough that an agent will not guess? Six deterministic checks | §6 |
+| **Gate** | GitHub Action `whosigns gate` · ruleset templates | Is this change small enough to review, tied to an approved spec, and approved by a human who did not write it? | §5, §7 |
+| **Evidence** | `whosigns evidence` · release asset | Who approved which spec version, when, and which change was built against it? Mapped to EU DORA RTS Art. 17 | §7 |
+
+## Principles
+
+1. **Runs where the work is.** Git and CI only. No service, no database, no account, no data leaves
+   your organization.
+2. **Teams, never individuals.** No output names or ranks a person.
+3. **Deterministic.** No model in any check. Every finding is explainable in one sentence and gives the
+   same answer twice.
+4. **Humans approve.** Bots and agents never count as approvers, and the kit itself approves nothing.
+5. **Unknown stays unknown.** Missing data is reported as missing, never estimated.
+
+## Status
+
+**Specification — nothing built yet; build paused (2026-10-09) while the series pilot runs.** Start with [`docs/spec.md`](docs/spec.md); decisions are in
+[`docs/decisions/`](docs/decisions/).
+
+This is a reference implementation shared in the open, not a product with support. For a governed
+specification service with immutable versions and a verifiable audit record, see
+[maestro](https://github.com/fps4/maestro) — the kit is its git-native, lightweight counterpart, and
+the two share a finding format and a decision-record shape.
+
+## Licence
+
+MIT — see [LICENSE](LICENSE).

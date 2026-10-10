@@ -13,8 +13,8 @@ related:
 
 ## 1. Why
 
-The paper *Organizing for Agentic Delivery* (the delivery paper of the series *From Personal Copilot
-to Organizational Capability*) argues four things an engineering organization can act
+The paper *From Personal Copilot to Organizational Capability* (nine moves; the kit serves Moves 6–9)
+argues four things an engineering organization can act
 on:
 
 1. AI raised individual output; delivery as a system did not keep up, and instability rose. **Measure
@@ -48,8 +48,8 @@ These hold in every part and every release. A change that breaks one is rejected
 | I-1 | **Nothing leaves the organization.** The kit runs in the user's CI or on their laptop, reads their git host with their token, and writes files. No telemetry, no hosted service | ADR-0001 |
 | I-2 | **No output identifies an individual.** Aggregates are per team; a group smaller than `min_group_size` (default 5 authors) is suppressed. No per-person table, export or debug mode | ADR-0002; AI Act Annex III 4(b) |
 | I-3 | **Deterministic checks only.** No model call in `lint`, `gate` or `evidence` | A gate must be explainable and repeatable |
-| I-4 | **Only humans approve.** An account that is a bot, a GitHub App, or listed in `agents:` never satisfies an approval requirement. The kit never approves anything itself | Paper §7, rule 1 |
-| I-5 | **Unknown is reported as unknown.** If a metric's source is not configured or not available, the report says so; it never estimates or substitutes | Paper §10 |
+| I-4 | **Only humans approve.** An account that is a bot, a GitHub App, or listed in `agents:` never satisfies an approval requirement. The kit never approves anything itself | Paper Move 8, rule 1 |
+| I-5 | **Unknown is reported as unknown.** If a metric's source is not configured or not available, the report says so; it never estimates or substitutes | Paper, *What this does not claim* |
 | I-6 | **Each part works alone.** Measure needs no brief; Brief needs no gate; Gate works without Evidence | Adoption in any order |
 | I-7 | **Read-only by default.** `measure`, `lint` and `evidence` need read scopes only. `gate` writes only a check run and, optionally, one PR comment | Least privilege |
 
@@ -95,20 +95,20 @@ whosigns measure --config whosigns.yml --baseline 2025-01-01..2025-03-31 --curre
 
 All per team, per period, with the delta. Time metrics report p50 / p75 / p90.
 
-| Metric | Definition (printed in the report) | Paper § |
+| Metric | Definition (printed in the report) | Paper move |
 |---|---|---|
-| PR size | lines added + deleted, excluding `size.exclude` | §3 |
-| Share over threshold | % of merged PRs above `size.threshold_lines` | §3 |
-| Pickup time | ready-for-review (or creation) → first review event by a human non-author | §3 |
-| Review elapsed | first human review → merge. **Elapsed time, not effort** | §3 |
-| Merged without human approval | % of merged PRs with no approving review by a human who is not an author or co-author | §3, §7 |
-| Reviewed only by bots | % of merged PRs whose only reviews are from bots/agents | §3 |
-| AI-assisted share | % of merged PRs matching `ai_assisted.markers` — **with the markers used, and a note that unmarked AI use is invisible** | §1 |
-| All of the above, split AI-assisted vs not | only when both groups meet `min_group_size` | §3 |
-| Deployment frequency | deployments per week from `deployments.source` | §4 |
-| Lead time | first commit of a PR → first deployment containing its merge commit | §4 |
-| Change failure rate | deployments followed by a failure signal within `window_days` ÷ deployments | §4 |
-| Rework (optional) | share of lines changed that modify lines < 21 days old | §4 |
+| PR size | lines added + deleted, excluding `size.exclude` | 7 |
+| Share over threshold | % of merged PRs above `size.threshold_lines` | 7 |
+| Pickup time | ready-for-review (or creation) → first review event by a human non-author | 7 |
+| Review elapsed | first human review → merge. **Elapsed time, not effort** | 7 |
+| Merged without human approval | % of merged PRs with no approving review by a human who is not an author or co-author | 7, 8 |
+| Reviewed only by bots | % of merged PRs whose only reviews are from bots/agents | 7 |
+| AI-assisted share | % of merged PRs matching `ai_assisted.markers` — **with the markers used, and a note that unmarked AI use is invisible** | 9 |
+| All of the above, split AI-assisted vs not | only when both groups meet `min_group_size` | 7 |
+| Deployment frequency | deployments per week from `deployments.source` | 9 |
+| Lead time | first commit of a PR → first deployment containing its merge commit | 9 |
+| Change failure rate | deployments followed by a failure signal within `window_days` ÷ deployments | 9 |
+| Rework (optional) | share of lines changed that modify lines < 21 days old | 9 |
 
 ### 5.4 The report
 
@@ -185,7 +185,7 @@ Free text: context, background, links. The checks read the front-matter, not thi
 
 ### 6.2 The linter (`whosigns lint <path…>`)
 
-Six deterministic rules, one per failure in the paper's §6 table. Each finding has an id, the field, a
+Six deterministic rules, one per failure in the paper's Move 6 table. Each finding has an id, the field, a
 plain-language message for the author, and what an agent would otherwise do.
 
 | Rule | Fails when | Message (example) |

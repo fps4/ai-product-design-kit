@@ -4,16 +4,16 @@
 a day, with no service to run.**
 
 AI made writing code cheap and left checking it expensive. This kit is the engineering half of the
-series *From Personal Copilot to Organizational Capability* and its delivery paper, *Organizing for
-Agentic Delivery* (links added when published): four small parts, each usable on its own, that run in
+series *From Personal Copilot to Organizational Capability* and its paper of nine moves (links added
+when published): four small parts, each usable on its own, that run in
 git and CI. The CLI is `whosigns`.
 
-| Part | Command / artifact | Answers | Paper § |
+| Part | Command / artifact | Answers | Paper move |
 |---|---|---|---|
-| **Measure** | `whosigns measure` | Did delivery change as AI adoption rose? PR size, time in review, merges with no human review, lead time, change failure rate — per team, before vs after | §1–§4, §9 |
-| **Brief** | `brief.md` template · `whosigns lint` · agent instructions | Is this brief precise enough that an agent will not guess? Six deterministic checks | §6 |
-| **Gate** | GitHub Action `whosigns gate` · ruleset templates | Is this change small enough to review, tied to an approved spec, and approved by a human who did not write it? | §5, §7 |
-| **Evidence** | `whosigns evidence` · release asset | Who approved which spec version, when, and which change was built against it? Mapped to EU DORA RTS Art. 17 | §7 |
+| **Measure** | `whosigns measure` | Did delivery change as AI adoption rose? PR size, time in review, merges with no human review, lead time, change failure rate — per team, before vs after | 9 |
+| **Brief** | `brief.md` template · `whosigns lint` · agent instructions | Is this brief precise enough that an agent will not guess? Six deterministic checks | 6 |
+| **Gate** | GitHub Action `whosigns gate` · ruleset templates | Is this change small enough to review, tied to an approved spec, and approved by a human who did not write it? | 7, 8 |
+| **Evidence** | `whosigns evidence` · release asset | Who approved which spec version, when, and which change was built against it? Mapped to EU DORA RTS Art. 17 | 8 |
 
 ## Principles
 

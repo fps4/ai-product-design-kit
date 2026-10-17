@@ -1,0 +1,45 @@
+# whosigns.yml — copy to your working directory and edit. Only the `measure:` block is used so far.
+measure:
+  # A list of owner/name, or a whole organization:
+  #   repos: org:acme
+  #   repos: { org: acme, include: ["payments-*"], exclude: ["*-sandbox"] }
+  repos:
+    - acme/payments-api
+    - acme/payments-web
+    - acme/search
+
+  # `repo` (the default) makes each repository its own team. A map groups repositories into teams.
+  # (`codeowners` and `github-teams` are specified but not built yet.)
+  teams:
+    map:
+      acme/payments-api: Payments
+      acme/payments-web: Payments
+      acme/search: Search
+    # default: Other        # team for repositories not in the map; leave out to skip them
+
+  # Any figure covering fewer distinct human authors than this is not shown. Lower it only when
+  # everyone it covers has agreed.
+  min_group_size: 5
+
+  size:
+    threshold_lines: 400     # the size beyond which review gets weak
+    # exclude: [...]         # replaces the default list of lockfiles, minified and snapshot files
+
+  # Accounts that are coding agents. Matched case-insensitively, with or without [bot].
+  # agents: [copilot, copilot-swe-agent, claude, devin-ai-integration, ...]
+
+  # How a PR is recognised as AI-assisted. Unmarked AI use stays invisible; that is reported.
+  # ai_assisted:
+  #   markers:
+  #     author_is_agent: true
+  #     co_author_trailers: true      # e.g. "Co-authored-by: Claude <...>"
+  #     assisted_by_trailer: true     # "Assisted-by:" or "Generated-by:"
+  #     labels: [ai-assisted, ai-generated, agent]
+  #     branch_prefixes: [copilot/, codex/, claude/, cursor/, devin/, jules/]
+
+  # Not built yet; reported as unknown.
+  deployments: { source: none }
+  failures: { source: none }
+
+  # GitHub Enterprise Server:
+  # github: { api_url: https://github.example.com/api/graphql }

@@ -27,8 +27,18 @@ git and CI. The CLI is `whosigns`.
 
 ## Status
 
-**Specification — nothing built yet; build paused (2026-10-09) while the series pilot runs.** Start with [`docs/spec.md`](docs/spec.md); decisions are in
+**`whosigns measure` is built (2026-10-17) for Loop 1, *Is review our bottleneck?*:** PR metrics,
+the queue in front of human review, team aggregation with suppression, a before/after report and a
+one-page readout for the sponsor. See [`docs/loop-1.md`](docs/loop-1.md). The rest (Brief, Gate,
+Evidence, and deployment metrics in Measure) is still specification; the rest of the build stays
+paused while the series pilot runs. Start with [`docs/spec.md`](docs/spec.md); decisions are in
 [`docs/decisions/`](docs/decisions/).
+
+```
+npm install && npm run build
+WHOSIGNS_TOKEN=<read-only token> node dist/src/cli.js measure \
+  --config whosigns.yml --baseline 2025-01-01..2025-03-31 --current 2026-07-01..2026-09-30
+```
 
 This is a reference implementation shared in the open, not a product with support. For a governed
 specification service with immutable versions and a verifiable audit record, see

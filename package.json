@@ -1,0 +1,30 @@
+{
+  "name": "@fps4/copilot-to-capability-kit",
+  "version": "0.1.0",
+  "description": "Measure, brief, gate and evidence for teams that build with AI agents. CLI: whosigns.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "whosigns": "dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "templates",
+    "whosigns.example.yml"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "whosigns": "node dist/src/cli.js"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.0",
+    "typescript": "^5.6.3"
+  }
+}

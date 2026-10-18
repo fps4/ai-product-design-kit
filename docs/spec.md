@@ -55,7 +55,7 @@ These hold in every part and every release. A change that breaks one is rejected
 
 ## 4. Scope
 
-**In (v1):** GitHub (cloud and Enterprise Server) · TypeScript/Node 22 CLI `whosigns` and a GitHub Action ·
+**In (v1):** GitHub (cloud and Enterprise Server) · TypeScript CLI `whosigns` on Node 20 or later, and a GitHub Action ·
 Markdown + JSON outputs · repository and organization ruleset templates.
 
 **Out (v1):** GitLab and Bitbucket (designed for — adapters later) · a dashboard or web UI · storing
@@ -75,6 +75,7 @@ periods and writes a team-level before/after report.
 whosigns measure --config whosigns.yml --baseline 2025-01-01..2025-03-31 --current 2026-07-01..2026-09-30
   → report/measure-2026-10-07.md
   → report/measure-2026-10-07.json
+  → report/readout-2026-10-07.md     the one-page readout for the sponsor (Loop 1)
 ```
 
 ### 5.2 Configuration (`whosigns.yml`, `measure:` block)
@@ -82,7 +83,7 @@ whosigns measure --config whosigns.yml --baseline 2025-01-01..2025-03-31 --curre
 | Key | Meaning | Default |
 |---|---|---|
 | `repos` | list or `org:<name>` with include/exclude globs | — (required) |
-| `teams` | `codeowners` (map by CODEOWNERS of touched paths), `github-teams`, or an explicit map of repo → team | `codeowners` |
+| `teams` | `repo` (each repository is a team), an explicit `map` of repo → team with an optional `default`, and later `codeowners` (map by CODEOWNERS of touched paths) or `github-teams` | `repo` — changed from `codeowners` on 2026-10-17: an explicit map needs no extra API calls or scopes, and CODEOWNERS is open question 3 |
 | `min_group_size` | suppress any aggregate with fewer distinct authors | `5` |
 | `size.threshold_lines` | the "too large to review" line | `400` |
 | `size.exclude` | globs not counted (lockfiles, generated code, snapshots) | common lockfiles |
@@ -90,6 +91,8 @@ whosigns measure --config whosigns.yml --baseline 2025-01-01..2025-03-31 --curre
 | `agents` | accounts and trailer names that are agents | common coding agents |
 | `deployments.source` | `deployments-api`, `workflow:<name>`, `releases`, or `none` | `none` |
 | `failures.source` | `label:<name>` on PRs/issues within `window_days` after a deploy, `revert-commits`, or `none` | `none` |
+| `lookback_days` | how far before the baseline to read PRs, so PRs opened earlier and merged inside it count | `90` |
+| `github.api_url` | GraphQL endpoint, for GitHub Enterprise Server | `https://api.github.com/graphql` |
 
 ### 5.3 Metrics
 
@@ -109,6 +112,8 @@ All per team, per period, with the delta. Time metrics report p50 / p75 / p90.
 | Lead time | first commit of a PR → first deployment containing its merge commit | 9 |
 | Change failure rate | deployments followed by a failure signal within `window_days` ÷ deployments | 9 |
 | Rework (optional) | share of lines changed that modify lines < 21 days old | 9 |
+| Waiting at period end | ready PRs with no review yet by a human non-author, still open at the end of the period, with how long they had waited | 7, 9 |
+| Average waiting | the time-weighted average number of PRs waiting for a first human review during the period: the queue in front of review (added 2026-10-17 for Loop 1) | 7, 9 |
 
 ### 5.4 The report
 
@@ -119,6 +124,10 @@ All per team, per period, with the delta. Time metrics report p50 / p75 / p90.
   (source not configured)`.
 - **Footer:** "questions to ask your team" — three prompts generated from the largest deltas, never
   conclusions.
+- **Readout (added 2026-10-17):** a separate one-page Markdown file for the sponsor, pre-filled with the
+  whole-organization figures, with *[Fill in]* sections for the cost, the one change proposed and who
+  has to say yes. `templates/readout-assistant.md` holds tool-neutral instructions for drafting it
+  from the JSON, which names no person. See [`loop-1.md`](./loop-1.md).
 
 ### 5.5 The survey
 
@@ -353,6 +362,7 @@ Time-boxed against the positioning cap: contracts come first.
 
 | | Delivers | Gate to move on |
 |---|---|---|
+| **M0a — Measure, Loop 1 slice** (built 2026-10-17) | `whosigns measure`: PR metrics, the review queue, `repo` and `map` teams, suppression, Markdown + JSON report, readout; experiment card; A-1.1–A-1.6 as tests. **Not yet:** deployments, lead time, change failure rate, rework, the survey, `codeowners`/`github-teams` teams | Run on four fps4 repositories reads correctly (done, at `min_group_size: 1`); one peer reviewer runs it on their own repos |
 | **M0 — Measure + Brief** (~1–2 days) | `whosigns measure` (PR metrics, team aggregation, suppression, report), survey template, brief template, `whosigns lint`, agent snippet | A-1.x and A-2.x pass; a report run on the fps4 repositories reads correctly; one peer reviewer runs `measure` on their own repos |
 | **M1 — Gate** | Action with G1–G4, ruleset templates, demo repository | A-3.x pass; gate running on maestro and the kit itself |
 | **M2 — Evidence** | `whosigns evidence`, emergency path, regulatory mapping | A-4.x pass; one regulated-sector reader reviews the mapping |

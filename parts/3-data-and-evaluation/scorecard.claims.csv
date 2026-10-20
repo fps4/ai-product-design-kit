@@ -1,0 +1,11 @@
+claim_amount_eur,cost_of_a_look_eur,max_chance_to_pay_automatically,max_chance_pct,route_if_above_the_line,note
+100,23,0.230,23.0%,handler,"synthetic; rule P x amount < 23"
+150,23,0.153,15.3%,handler,"on screen: 15%"
+200,23,0.115,11.5%,handler,
+300,23,0.077,7.7%,handler,"up to 300: the rule may pay glass and small single items with no claim in 3 years, whatever the score"
+400,23,0.058,5.8%,handler,"on screen: 6%"
+500,23,0.046,4.6%,handler,
+750,23,0.031,3.1%,handler,
+1000,23,0.023,2.3%,handler,"on screen: about 2%; the cap"
+1000.01,23,,,handler always,"above the 1,000 cap a handler always looks"
+2500,23,,,handler always,"top of the small-claims band"

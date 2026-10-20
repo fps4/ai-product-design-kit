@@ -1,5 +1,5 @@
 ---
-title: copilot-to-capability-kit — specification
+title: whosigns — specification (AI Product Design kit)
 status: draft
 date: 2026-10-07
 related:
@@ -9,13 +9,13 @@ related:
   - ./decisions/0004-interoperate-with-spec-formats-and-maestro.md
 ---
 
-# copilot-to-capability-kit — specification
+# whosigns — specification
 
 ## 1. Why
 
-The paper *From Personal Copilot to Organizational Capability* (nine moves; the kit serves Moves 6–9)
-argues four things an engineering organization can act
-on:
+Part 8 of the storyline *AI Product Design* — *Building it with agents, from personal copilot to
+organizational capability*, the paper's Moves 6–9 — argues four things an engineering organization can
+act on:
 
 1. AI raised individual output; delivery as a system did not keep up, and instability rose. **Measure
    it on your own estate before you argue about it.**
@@ -126,12 +126,12 @@ All per team, per period, with the delta. Time metrics report p50 / p75 / p90.
   conclusions.
 - **Readout (added 2026-10-17):** a separate one-page Markdown file for the sponsor, pre-filled with the
   whole-organization figures, with *[Fill in]* sections for the cost, the one change proposed and who
-  has to say yes. `templates/readout-assistant.md` holds tool-neutral instructions for drafting it
+  has to say yes. `parts/8-building-with-agents/readout-assistant.md` holds tool-neutral instructions for drafting it
   from the JSON, which names no person. See [`loop-1.md`](./loop-1.md).
 
 ### 5.5 The survey
 
-`survey/team-pulse.md`: eight questions, anonymous, aggregated per team (same `min_group_size`):
+`parts/8-building-with-agents/team-pulse-survey.md`: eight questions, anonymous, aggregated per team (same `min_group_size`):
 perceived speed; time spent reviewing AI-written code; confidence that reviews catch problems in AI
 code; trust in AI output; how often agents build the wrong thing from a brief; how often you had to
 redo agent work; whether size limits would help; one open question. Ships as Markdown and as an import
@@ -156,7 +156,7 @@ metrics.
 
 ## 6. Part 2 — Brief
 
-### 6.1 The template (`templates/brief.md`)
+### 6.1 The template (`parts/8-building-with-agents/brief-template.md`)
 
 Markdown with YAML front-matter. The four parts of the paper, broken into the fields the checks need.
 
@@ -212,7 +212,7 @@ plain-language message for the author, and what an agent would otherwise do.
 - Exit code: `0` clean, `1` findings, `2` invalid file. `--warn` reports without failing.
 - **Not** checked: whether the content is *right*. The linter finds what is missing, not what is wrong.
 
-### 6.3 Agent instructions (`templates/AGENTS.md` snippet)
+### 6.3 Agent instructions (snippet in `parts/8-building-with-agents/six-failure-checklist.md`)
 
 A short block to paste into `AGENTS.md` / `CLAUDE.md` / Copilot instructions:
 
@@ -233,7 +233,7 @@ A short block to paste into `AGENTS.md` / `CLAUDE.md` / Copilot instructions:
 
 ## 7. Part 3 — Gate
 
-### 7.1 The Action (`fps4/copilot-to-capability-kit/gate@v1`)
+### 7.1 The Action (`fps4/ai-product-design-kit/whosigns/gate@v1`)
 
 Runs on `pull_request` (opened, synchronize, ready_for_review, labeled) and `pull_request_review`
 (submitted, dismissed). Publishes one required check, `whosigns/gate`, with a summary of every rule.
@@ -349,7 +349,7 @@ repository's admin controls.**
 
 ## 9. Packaging
 
-- One npm package `@fps4/copilot-to-capability-kit` exposing `whosigns`; one composite/JS Action in the same
+- One npm package `@fps4/whosigns` (folder `whosigns/`) exposing `whosigns`; one composite/JS Action in the same
   repository; templates and rulesets as plain files.
 - `whosigns init` writes `whosigns.yml`, `briefs/_template.md`, the agent-instructions snippet and a workflow file —
   nothing else.
@@ -358,7 +358,7 @@ repository's admin controls.**
 
 ## 10. Milestones
 
-Time-boxed against the positioning cap: contracts come first.
+Time-boxed: a milestone is built when the part of the storyline that uses it needs it.
 
 | | Delivers | Gate to move on |
 |---|---|---|
@@ -377,9 +377,8 @@ Time-boxed against the positioning cap: contracts come first.
 3. **Team mapping:** is CODEOWNERS a good enough default for a first run?
 4. **Evidence and named approvers:** confirm with a regulated reader that recording approver logins
    (and only approvers) is what they need, and how long to keep the files.
-5. **Name — decided 2026-10-09.** Repository and package: `copilot-to-capability-kit` /
-   `@fps4/copilot-to-capability-kit`, after the series *From Personal Copilot to Organizational
-   Capability*. CLI, config and check: `whosigns` (`whosigns.yml`, `whosigns/gate`), after the series'
-   question *"Who signs?"*. Replaces the working name `adk`, which collided with Google's Agent
+5. **Name — decided 2026-10-09, repository renamed 2026-10-20.** Package `@fps4/whosigns` in the
+   repository `ai-product-design-kit` (was `copilot-to-capability-kit`; see ADR-0005). CLI, config and
+   check: `whosigns` (`whosigns.yml`, `whosigns/gate`), after the question *"Who signs?"* (episode 8.5). Replaces the working name `adk`, which collided with Google's Agent
    Development Kit. `whosigns` was free on npm on 2026-10-09; check GitHub Marketplace and PyPI before
    publishing.

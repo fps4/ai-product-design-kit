@@ -1,3 +1,16 @@
+---
+item: 16
+title: Experiment card
+part: 8 · Building it with agents (also the companion paper, Part 6)
+episodes: [8.2]
+forms: [Markdown, PDF, DOCX (to make)]
+version: blank
+companion: readout-assistant.md · team-pulse-survey.md · kit docs/loop-1.md
+licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
+status: Draft v0.1 · 2026-10-17 (moved from templates/ 2026-10-20)
+sources: "Paper Move 9 · DORA, Choosing measurement frameworks to fit your organizational goals (2025) — the plan-do-check-adjust loop"
+---
+
 # Experiment card
 
 *One change, tested on a few teams for a fixed time, with a result decided in advance that would make

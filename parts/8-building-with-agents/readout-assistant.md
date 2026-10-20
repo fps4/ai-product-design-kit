@@ -1,3 +1,16 @@
+---
+item: 14
+title: Instructions for an assistant — draft the sponsor readout
+part: 8 · Building it with agents
+episodes: [8.2]
+forms: [Text]
+version: blank
+companion: whosigns measure (kit, built 2026-10-17) · experiment-card.md · kit docs/loop-1.md
+licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
+status: Draft v0.1 · 2026-10-17 (moved from templates/ 2026-10-20)
+sources: "Paper Moves 7 and 9"
+---
+
 # Instructions for an assistant: draft the sponsor readout
 
 *Paste the text below into the AI assistant your organization has approved (Microsoft 365 Copilot,

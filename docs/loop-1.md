@@ -16,7 +16,7 @@ finished work (Chen & Stratton, 2026, working paper). This loop checks whether t
 |---|---|---|---|
 | 1. Measure | Engineering lead | ~1 hour | `measure-<date>.md`, `.json` |
 | 2. Write the readout | Engineering lead | ~30 min | `readout-<date>.md`, one page |
-| 3. Propose one experiment | Lead, with the sponsor | one meeting | a filled-in [experiment card](../templates/experiment-card.md) |
+| 3. Propose one experiment | Lead, with the sponsor | one meeting | a filled-in [experiment card](../parts/8-building-with-agents/experiment-card.md) |
 | 4. Run it, measure again | The teams in it | 4–8 weeks | the same report, for the experiment period |
 
 ## 1. Measure
@@ -26,12 +26,12 @@ finished work (Chen & Stratton, 2026, working paper). This loop checks whether t
 - **Token:** a GitHub fine-grained personal access token with **read-only** access to the
   repositories: *Metadata*, *Pull requests* and *Contents*, all read. Set it as `WHOSIGNS_TOKEN`.
   If you use the GitHub CLI and are logged in, `whosigns` uses `gh auth token` instead.
-- **Config:** copy [`whosigns.example.yml`](../whosigns.example.yml) to `whosigns.yml`, list the
+- **Config:** copy [`whosigns.example.yml`](../whosigns/whosigns.example.yml) to `whosigns.yml`, list the
   repositories, and group them into teams.
 - **Periods:** a quarter before broad AI use, and a recent quarter.
 
 ```
-npx @fps4/copilot-to-capability-kit measure --baseline 2025-01-01..2025-03-31 --current 2026-07-01..2026-09-30
+npx @fps4/whosigns measure --baseline 2025-01-01..2025-03-31 --current 2026-07-01..2026-09-30
 ```
 
 *(Until the package is published: clone this repository, `npm install && npm run build`, then
@@ -55,7 +55,7 @@ with your works council before measuring teams, even at team level.
 
 `readout-<date>.md` is pre-filled with the numbers. Write the three sections marked *[Fill in]* in
 your own words: what the waiting costs in your setting, the one change you propose, and who has to say
-yes. If you want help, [`templates/readout-assistant.md`](../templates/readout-assistant.md) has
+yes. If you want help, [`parts/8-building-with-agents/readout-assistant.md`](../parts/8-building-with-agents/readout-assistant.md) has
 instructions for any approved assistant; paste it with the JSON, which names no person.
 
 ## 3. Propose one experiment
@@ -69,7 +69,7 @@ One change, tested on a few teams with others as comparison. Some that fit this 
 | More merges without human approval | Require one approving review from a human who did not write or co-author the change, on the repositories where it matters most |
 | Little change at all | Ask the teams why. Unmarked AI use is invisible here; the survey may tell you more than the logs |
 
-These are options, not recommendations. The [experiment card](../templates/experiment-card.md) makes
+These are options, not recommendations. The [experiment card](../parts/8-building-with-agents/experiment-card.md) makes
 you decide, before you start, what result would make you stop and what would count as success.
 
 ## 4. Run it and measure again

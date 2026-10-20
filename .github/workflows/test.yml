@@ -6,16 +6,29 @@ on:
 permissions:
   contents: read
 jobs:
-  test:
+  whosigns:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20, 22]
+    defaults:
+      run:
+        working-directory: whosigns
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: npm
+          cache-dependency-path: whosigns/package-lock.json
       - run: npm ci
       - run: npm test
+  case:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -I case/generate.py --sample
+      - run: python3 -I -m unittest discover -s case -t case

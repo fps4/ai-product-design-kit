@@ -275,7 +275,7 @@ export function buildReadout(input: ReportInput): string {
   lines.push('', '## What it costs', '');
   lines.push('*[Fill in, in your own words: what the waiting means in your setting. Examples: features waiting for release, reviewers\' hours per week, context lost when a PR waits days. Use your numbers, not a benchmark.]*', '');
   lines.push('## The one change we propose', '');
-  lines.push('*[One change, as an experiment, with the card attached (templates/experiment-card.md). A common first one: a limit on agent-written PRs waiting for human review per reviewer, in two teams for six weeks, with the others as comparison.]*', '');
+  lines.push('*[One change, as an experiment, with the card attached (parts/8-building-with-agents/experiment-card.md in the kit). A common first one: a limit on agent-written PRs waiting for human review per reviewer, in two teams for six weeks, with the others as comparison.]*', '');
   lines.push('## Who has to say yes', '');
   lines.push('*[Name the role, not only the person: who approves the experiment, who owns the teams in it, and who decides at the end whether to keep it.]*', '');
   lines.push('## What this does not show', '');

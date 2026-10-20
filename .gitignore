@@ -2,3 +2,5 @@ node_modules/
 dist/
 report/
 .env
+case/claims.csv
+__pycache__/

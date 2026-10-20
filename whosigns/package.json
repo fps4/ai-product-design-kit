@@ -1,7 +1,7 @@
 {
-  "name": "@fps4/copilot-to-capability-kit",
+  "name": "@fps4/whosigns",
   "version": "0.1.0",
-  "description": "Measure, brief, gate and evidence for teams that build with AI agents. CLI: whosigns.",
+  "description": "Measure, brief, gate and evidence for teams that build with AI agents. Part of the AI Product Design kit.",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -9,7 +9,6 @@
   },
   "files": [
     "dist/src",
-    "templates",
     "whosigns.example.yml"
   ],
   "engines": {

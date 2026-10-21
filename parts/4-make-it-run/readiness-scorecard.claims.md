@@ -7,7 +7,7 @@ forms: Word + PDF (built from this source)
 version: claims case
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: AI Product Design paper, Move 3 · the running case, Parts 3, 4 and 6
+sources: AI Product Design paper, Part 4, the readiness gates · the running case, Parts 3, 4 and 6
 ---
 
 # Readiness scorecard — the claims fast track

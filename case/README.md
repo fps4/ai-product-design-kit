@@ -36,7 +36,7 @@ match. A number matches if it is within 5%. Where the case states an exact rule,
 | The desk today | €2.49M handling; half the fraud paid, ≈ €952,000; 585 wrong denials at ≈ €350 each | Part 1 (1.1, 1.2) |
 | The rule | 30% of small claims; 408 wrong, ≈ €61,000; ≈ €748,000 desk time saved | Part 2 (2.1) |
 | The threshold | P × amount < €23; cut-offs at €150, €400, €1,000; model adds 20%, 50% automatic; nothing over €1,000 paid automatically; the 3,000-claim verified set | Part 3 (3.1, 3.2) |
-| The value case | €779,000 assisted, €25,000 audit, €1.689M gross, €1.339M net, 8-month payback; the 35% sensitivity; the stage 1 gate; the fraud breaker | Part 7 (7.1) |
+| The value case | €779,000 assisted, €25,000 audit, €1.689M gross handling saving; ≈ €64,000 a year more in error cost on the automatic slice; €1.275M net, 8.5-month payback; the 35% low case (≈ −€18,000 error cost, €1.131M net, 9.5 months); the stage 1 gate on net; the fraud breaker at 50% and at 35% | Part 7 (7.1) |
 
 **Assumed numbers** are the case's own choices: the hourly rate, the handling minutes, the build and
 run costs, the cost of a wrong denial. The check prints them as *assumed* so you can trace every
@@ -48,11 +48,15 @@ figure in the value case, but data cannot confirm them. A claims professional sh
 The last part of the check is for information, not pass or fail. Each line is something only a
 claim-by-claim table can show.
 
-- **The fast track makes its own errors.** On the automatic slice it pays about €195,000 that is not
-  owed. Today's desk pays about €20,000 of fraud on those same claims, and the fast track avoids
-  about €110,000 of wrong denials. The net is about **€65,000 a year more** in error cost. The value
-  case keeps error cost flat, so this lowers net to about €1.27M. That is well within the case's
-  €238,000 breaker, which is why shadow mode measures fraud paid first.
+- **The fast track makes its own errors, and the value case counts them.** On the automatic slice it
+  pays about €195,000 that is not owed. Today's desk pays about €20,000 of fraud on those same claims,
+  and the fast track avoids 318 wrong denials, about €111,000. The net is about **€64,000 a year more**
+  in error cost, and the value case subtracts it: net about €1.28M, not the €1.34M the handling saving
+  alone gives. At 35% automatic the errors *fall*, by about €18,000, because the claims the model adds
+  first are its most confident ones (lowest score × amount). The breaker is bigger: €238,000 more fraud
+  paid takes the net to about €1.04M at 50% and below the €1M bar at 35%, which is why shadow mode
+  measures fraud paid first. Only a claim-by-claim table can give this number; the check prints its
+  parts.
 - **The labels show only half the fraud.** Recorded labels show 2% fraud, because fraud is known only
   where the fraud desk looked. The truth is 4%, and the verified set shows it. A model trained on
   recorded labels learns which claims the fraud desk chose to look at.

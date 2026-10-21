@@ -8,7 +8,7 @@ version: claims case
 companion: brief-template.md (blank) · six-failure-checklist.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Running case, Part 8 (see case/README.md) · AI Product Design, Part 8 (Move 6)"
+sources: "Running case, Part 8 (see case/README.md) · AI Product Design, Part 8 (*make the brief precise enough to build from*)"
 ---
 
 # Brief — automatic payment of small claims (fast track)

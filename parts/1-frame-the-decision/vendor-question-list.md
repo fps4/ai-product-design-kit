@@ -7,7 +7,7 @@ forms: PDF + DOCX (this Markdown is the source)
 version: blank
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: The storyline's own (paper, Part 1, Move 1 — *know what is already switched on*; Part 2, Move 2)
+sources: The storyline's own (paper, Part 1, *fund one use case, not more seats* — *know what is already switched on*; Part 2, *know what you are buying*)
 ---
 
 # Vendor question list

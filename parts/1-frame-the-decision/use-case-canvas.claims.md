@@ -80,5 +80,5 @@ Feasibility of A, check by check:
 |---|---|
 | **First, or waits?** | **A goes first** |
 | **Why B and C wait** | B: the wait causes the questions. C: no reliable labels yet, and the highest fairness risk |
-| **Next gate** | Stage 1, *worth doing?* — a two-week value case. Go if the saving is above €1 million a year at 35% automation (Part 7) |
+| **Next gate** | Stage 1, *worth doing?* — a two-week value case. Go if the net saving is above €1 million a year at 35% automation (Part 7) |
 | **Signed by** | The head of claims |

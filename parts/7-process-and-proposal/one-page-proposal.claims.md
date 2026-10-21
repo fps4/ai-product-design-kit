@@ -79,15 +79,17 @@ evaluation runs.
 |---|---|
 | Handling today | ≈ €2,493,000 |
 | Proposed: 50% automatic (rule 30% + model 20%), the rest with AI help at 25 min, 2% audited | ≈ €804,000 |
-| Gross saving | ≈ €1,689,000 |
+| Gross handling saving | ≈ €1,689,000 |
+| The fast track's own errors: pays ≈ €195,000 not owed; the desk no longer pays ≈ €20,000 of fraud on the same claims or makes 318 wrong denials (≈ €111,000) | ≈ €64,000 more |
 | Running cost | €350,000 |
-| **Net** | **≈ €1,339,000** — payback ≈ **8 months** on a €900,000 build |
-| **Low case:** 35% automatic | Net ≈ €1,113,000 — payback ≈ **10 months** |
+| **Net** | **≈ €1,275,000** — payback ≈ **8.5 months** on a €900,000 build |
+| **Low case:** 35% automatic — the rule slice and the model's most confident claims, so errors fall by ≈ €18,000 | Net ≈ €1,131,000 — payback ≈ **9.5 months** |
 
 ## 7. The number that breaks it
 
 **Fraud paid**, about €952,000 a year today. If the fast track raised it by a quarter (≈ €238,000
-more), the net falls to about €1.1 million. Stage 2 estimates what the fast track would have paid in
+more), the net falls to about €1.04 million — at 35% automatic as well, to about €0.89 million, below
+the stage-1 bar. Stage 2 estimates what the fast track would have paid in
 fraud on the verified set; stage 3 measures it on live claims, in shadow mode, before anything is paid
 automatically.
 

@@ -7,7 +7,7 @@ forms: PDF + DOCX (this Markdown is the source)
 version: blank
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: The decision frame (prediction · judgement · action) follows Agrawal, Gans & Goldfarb, *Prediction Machines* (2018), paraphrased. The rest is the storyline's own (paper, Part 1, Move 1)
+sources: The decision frame (prediction · judgement · action) follows Agrawal, Gans & Goldfarb, *Prediction Machines* (2018), paraphrased. The rest is the storyline's own (paper, Part 1, *fund one use case, not more seats*)
 ---
 
 # Use-case canvas

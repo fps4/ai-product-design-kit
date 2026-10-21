@@ -72,16 +72,17 @@ One line each. Always include doing nothing and the simplest rule.
 
 ## 6. If it works
 
-Today · proposed · net a year · payback. Then the low case: the same at the pessimistic assumption.
+Today · proposed · the errors the new way makes, counted · net a year · payback. Then the low case: the
+same at the pessimistic assumption.
 
-*Example: ≈ €2.5M → ≈ €0.8M; ≈ €1.3M net; payback ≈ 8 months. Low case (35% automatic): ≈ €1.1M net;
-≈ 10 months.*
+*Example: ≈ €2.5M → ≈ €0.8M; the fast track's own errors ≈ €64,000 more; ≈ €1.28M net; payback
+≈ 8.5 months. Low case (35% automatic): ≈ €1.13M net; ≈ 9.5 months.*
 
 ## 7. The number that breaks it
 
 The one figure that, if it moves, turns the case. How this stage measures it.
 
-*Example: Fraud paid (≈ €952,000 today). Up a quarter, net falls to ≈ €1.1M. This stage estimates it on
+*Example: Fraud paid (≈ €952,000 today). Up a quarter, net falls to ≈ €1.04M. This stage estimates it on
 the checked claims; shadow mode measures it before anything is automatic.*
 
 ## 8. Risks we admit

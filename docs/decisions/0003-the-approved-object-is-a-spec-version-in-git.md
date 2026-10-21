@@ -10,9 +10,9 @@ related:
 
 ## Context
 
-The paper's Move 8 moves the human decision from the code diff to the specification: approve a small,
-structured, immutable version; gate the code against it; record who approved which version and what
-was built against it. maestro's specs-service does this with immutable versions in a service and a
+The paper's Move 8 (*approve the spec, gate the code*) moves the human decision from the code diff to
+the specification: approve a small, structured, immutable version; gate the code against it; record
+who approved which version and what was built against it. maestro's specs-service does this with immutable versions in a service and a
 named human deciding at a gate. Its own open item is the last link — the change built against an
 approved version (maestro specs ADR-0016 proposes the git-native path).
 

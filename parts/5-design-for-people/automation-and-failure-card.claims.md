@@ -7,7 +7,7 @@ forms: PDF (A4 landscape, two sides) + DOCX
 version: claims case
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: Amershi et al., Guidelines for Human-AI Interaction (CHI 2019) · Google PAIR, People + AI Guidebook · Parasuraman & Riley, Humans and Automation (Human Factors, 1997) · Parasuraman & Manzey, Complacency and Bias in Human Use of Automation (Human Factors, 2010) · Ombudsman van de Verzekeringen, Jaarverslag 2025 (suspicion and sanctions)
+sources: Amershi et al., Guidelines for Human-AI Interaction (CHI 2019) · Google PAIR, People + AI Guidebook · Parasuraman & Riley, Humans and Automation (Human Factors, 1997) · Parasuraman & Manzey, Complacency and Bias in Human Use of Automation (Human Factors, 2010) · Ombudsman van de Verzekeringen, Jaarverslag 2025 (suspicion and sanctions) · AI Act Art. 50(1) (why the notices are a design choice, not a duty)
 blank: automation-and-failure-card.md
 ---
 
@@ -60,7 +60,8 @@ screen; no score ever shown to the policyholder.
 - Automatic payment: *"Your claim was checked and paid automatically today. Want a person to look at
   it? Ask a person."* Answered within a day.
 - Letters drafted with AI help say so, and say a handler checked them.
-  <!-- TO CONFIRM: wording against AI Act Art. 50 and its application date (evidence A12) -->
+- Both are the insurer's design choice, not an AI Act duty: Art. 50(1) applies only if a chat
+  assistant talks to policyholders.
 
 ---
 

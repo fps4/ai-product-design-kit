@@ -8,7 +8,7 @@ version: blank
 companion: whosigns measure (kit, built 2026-10-17) · experiment-card.md · kit docs/loop-1.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-17 (moved from templates/ 2026-10-20)
-sources: "Paper Moves 7 and 9"
+sources: "Paper Part 8, *check before review, and keep changes small* and *measure the delivery system, not the people*"
 ---
 
 # Instructions for an assistant: draft the sponsor readout

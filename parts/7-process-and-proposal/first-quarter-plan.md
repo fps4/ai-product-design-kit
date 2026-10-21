@@ -24,18 +24,22 @@ fix.*
 | **Sponsor** — owns the plan, decides at the gates | |
 | **Architecture** | |
 | **Product Owner** | |
-| **Engineering lead** | |
+| **Engineering lead** — delivery track | |
 | Also needed (data owner, compliance, the people who will check labels) | |
 
 ## The twelve weeks
 
-The numbers in brackets are the parts; the downloads are the tools for that cell.
+Two tracks run side by side. The first three columns are the product track: the use case through
+Parts 1–7. The engineering lead's column is the **delivery track** (Part 8): how the teams that will
+build it work with agents. It runs alongside, not on the critical path: no gate waits for it, and its
+first customer is the evaluation work in stage 2. The numbers in brackets are the parts; the
+downloads are the tools for that cell.
 
-| Weeks | Sponsor | Architecture | Product Owner | Engineering lead |
+| Weeks | Sponsor | Architecture | Product Owner | Engineering lead — delivery track (8) |
 |---|---|---|---|---|
-| **1–2** | Name the decision, the information it lacks and the action; name the owner; price today's errors (1) — *use-case canvas* · Start the inventory of AI already switched on (1) — *vendor question list* | Run the readiness gates on the candidate (4) — *readiness scorecard* · Place it in its risk tier (6) — *AI product risk register* · Which rung, and which of the three? (2) — *approach ladder card* | Write the brief for the first piece of work (8) — *brief template + checklist* | Baseline the delivery metrics, before anything changes (8) — *review-bottleneck check* |
+| **1–2** | Name the decision, the information it lacks and the action; name the owner; price today's errors (1) — *use-case canvas* · Start the inventory of AI already switched on (1) — *vendor question list* | Run the readiness gates on the candidate (4) — *readiness scorecard* · Place it in its risk tier (6) — *AI product risk register* · Which rung, and which of the three? (2) — *approach ladder card* | Write down which wrong answers are unacceptable, and what each costs (3) — *scorecard template* | Baseline the delivery metrics, before anything changes (8) — *review-bottleneck check* |
 | | Output: | Output: | Output: | Output: |
-| **3–6** | Fund the gaps the gates found (4) · **Stage-1 gate**: worth doing? (7) — *one-page proposal* | Draw it on the reference architecture; mark what a second use case could reuse (4) — *reference architecture* | Agree the scorecard, the baseline and the threshold (3) — *scorecard template* · Set the automation level per step, and what happens when it is wrong (5) — *automation and failure card* | Size limit and checks before review (8) — *size-limit rules* |
+| **3–6** | Fund the gaps the gates found (4) · **Stage-1 gate**: worth doing? (7) — *one-page proposal* | Draw it on the reference architecture; mark what a second use case could reuse (4) — *reference architecture* | Agree the scorecard, the baseline and the threshold (3) — *scorecard template* · Set the automation level per step, and what happens when it is wrong (5) — *automation and failure card* | Brief template and the six-failure check in use; size limit and checks before review (8) — *brief template + checklist* · *size-limit rules* |
 | | Output: | Output: | Output: | Output: |
 | **7–12** | **Stage-2 gate**: can a model learn it? Decided on the scorecard (3, 7) — *one-page proposal* | Shared layers into the platform (4) · One risk register, owners and review dates (6) | Approve specifications on the record: the threshold as a signed version (8) — *"who signs" decision matrix* | Measure again; keep or stop each change (8) — *experiment card* |
 | | Output: | Output: | Output: | Output: |

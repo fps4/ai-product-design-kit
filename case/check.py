@@ -88,14 +88,31 @@ def auc(scores: list[float], positive: list[bool]) -> float:
     return (rank_sum - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg)
 
 
-def value_case(n_small: int, n_auto: int) -> dict[str, float]:
+def value_case(n_small: int, n_auto: int, error_change: float = 0.0) -> dict[str, float]:
     today = n_small * DESK_MIN / 60 * RATE
     assisted = (n_small - n_auto) * ASSISTED_MIN / 60 * RATE
     audit = AUDIT_SHARE * n_auto * DESK_MIN / 60 * RATE
     gross = today - assisted - audit
-    net = gross - RUN
+    net = gross - error_change - RUN
     return {"today": today, "assisted": assisted, "audit": audit, "proposed": assisted + audit,
-            "gross": gross, "net": net, "payback_months": 12 * BUILD / net}
+            "gross": gross, "error_change": error_change, "net": net,
+            "payback_months": 12 * BUILD / net}
+
+
+def error_cost(auto: list[dict], per_denial: float) -> dict[str, float]:
+    """The change in error cost when these claims go on the fast track instead of the desk.
+
+    The fast track pays the part not owed on every fraudulent or uncovered claim it takes (before the
+    2% audit). On the same claims, today's desk paid some fraud and wrongly denied some valid claims;
+    the fast track no longer does either.
+    """
+    paid = sum(r["excess"] for r in auto if r["sim_truth"] != "valid")
+    desk_fraud = sum(r["excess"] for r in auto
+                     if r["sim_truth"] == "fraud" and r["desk_decision"] == "pay")
+    denials = sum(1 for r in auto if r["sim_truth"] == "valid" and r["desk_decision"] == "deny")
+    return {"paid": paid, "desk_fraud": desk_fraud, "denials": denials,
+            "denials_cost": denials * per_denial,
+            "change": paid - desk_fraud - denials * per_denial}
 
 
 def run(path: Path) -> Report:
@@ -174,25 +191,36 @@ def run(path: Path) -> Report:
     rep.check("Verified set cost (1 h a claim)", 165_000, len(verified) * VERIFIED_H * RATE)
 
     rep.section("Part 7: the value case, from the data's automatic share")
-    vc = value_case(n, len(auto))
+    err = error_cost(auto, per_denial)
+    vc = value_case(n, len(auto), err["change"])
     rep.check("Assisted handling (25 min)", 779_000, vc["assisted"])
     rep.check("Audit of 2% of automatic claims", 25_000, vc["audit"])
     rep.check("Proposed handling, total", 804_000, vc["proposed"])
-    rep.check("Gross saving", 1_689_000, vc["gross"])
-    rep.check("Net (after EUR 350,000 a year to run)", 1_339_000, vc["net"])
-    rep.check("Payback on EUR 900,000", 8, vc["payback_months"], lambda x: f"{x:.1f} months", tol=0.10)
-    sens = value_case(n, round(0.35 * n))
+    rep.check("Gross handling saving", 1_689_000, vc["gross"])
+    rep.check("Error cost of the automatic slice", 64_000, vc["error_change"])
+    rep.check("Net (after error cost and EUR 350,000 a year to run)", 1_275_000, vc["net"])
+    rep.check("Payback on EUR 900,000", 8.5, vc["payback_months"], lambda x: f"{x:.1f} months",
+              tol=0.10)
+    # The low case: the rule slice plus the model's most confident claims (lowest score x amount
+    # first), to 35% of small claims in total.
+    model_first = sorted(model, key=lambda r: float(r["model_score"]) * r["amount"])
+    auto35 = rule + model_first[: round(0.35 * n) - len(rule)]
+    err35 = error_cost(auto35, per_denial)
+    sens = value_case(n, len(auto35), err35["change"])
     rep.check("If 35% automatic: assisted", 1_013_000, sens["assisted"])
     rep.check("If 35% automatic: audit", 17_000, sens["audit"])
-    rep.check("If 35% automatic: saving", 1_463_000, sens["gross"])
-    rep.check("If 35% automatic: net", 1_113_000, sens["net"])
-    rep.check("If 35% automatic: payback", 10, sens["payback_months"], lambda x: f"{x:.1f} months",
+    rep.check("If 35% automatic: handling saving", 1_463_000, sens["gross"])
+    rep.check("If 35% automatic: error cost (the clearest claims first)", -18_000,
+              sens["error_change"])
+    rep.check("If 35% automatic: net", 1_131_000, sens["net"])
+    rep.check("If 35% automatic: payback", 9.5, sens["payback_months"], lambda x: f"{x:.1f} months",
               tol=0.10)
-    rep.exact("Stage 1 gate: saving above EUR 1M at 35%", "go", "go" if sens["gross"] > 1e6 else "stop",
-              sens["gross"] > 1e6)
+    rep.exact("Stage 1 gate: net above EUR 1M at 35%", "go", "go" if sens["net"] > 1e6 else "stop",
+              sens["net"] > 1e6)
     breaker = 0.25 * desk_fraud_cost
     rep.check("Breaker: fraud paid up a quarter", 238_000, breaker)
-    rep.check("Net after the breaker", 1_100_000, vc["net"] - breaker)
+    rep.check("Net after the breaker", 1_037_000, vc["net"] - breaker)
+    rep.check("35% and the breaker (below the EUR 1M bar)", 893_000, sens["net"] - breaker)
     for what, value in (("Hourly rate", "EUR 55"), ("Minutes per claim today / assisted", "40 / 25"),
                         ("Build, once", "EUR 900,000"), ("Run, a year", "EUR 350,000"),
                         ("Complaint hours, leavers, customer value", "3 h, 25%, EUR 740")):
@@ -200,20 +228,18 @@ def run(path: Path) -> Report:
 
     # What the data shows that the arithmetic cannot. Information, not checks.
     rep.section("What the data shows that the arithmetic cannot (information)")
-    ft_fraud = sum(r["excess"] for r in auto if r["sim_truth"] == "fraud")
-    ft_nc = sum(r["excess"] for r in auto if r["sim_truth"] == "not_covered")
-    desk_on_slice = sum(r["excess"] for r in auto if r["sim_truth"] == "fraud" and r["desk_decision"] == "pay")
-    denials_avoided = sum(1 for r in auto if r["sim_truth"] == "valid" and r["desk_decision"] == "deny")
-    change = ft_fraud + ft_nc - desk_on_slice - denials_avoided * per_denial
     rep.note("Automatic slice: wrong claims paid", "-", f"{sum(bad(r) for r in auto):,} of {len(auto):,}",
              pct(sum(bad(r) for r in auto) / len(auto)))
-    rep.note("Automatic slice: fraud + uncovered paid", "-", eur(ft_fraud + ft_nc),
+    rep.note("Error cost, 50%: fraud + uncovered paid", "EUR 195,000", eur(err["paid"]),
              "before the 2% audit")
-    rep.note("Same claims at the desk today: fraud paid", "-", eur(desk_on_slice), "")
-    rep.note("Wrong denials the fast track avoids", "-",
-             f"{denials_avoided} = {eur(denials_avoided * per_denial)}", "")
-    rep.note("Net change in error cost", "kept flat", eur(change),
-             f"vs breaker {eur(breaker)}; net {eur(vc['net'] - change)}")
+    rep.note("Error cost, 50%: desk fraud on the same claims", "EUR 20,000", eur(err["desk_fraud"]),
+             "no longer paid by the desk")
+    rep.note("Error cost, 50%: wrong denials avoided", "318 = EUR 111,000",
+             f"{err['denials']} = {eur(err['denials_cost'])}", "")
+    rep.note("Error cost, 35%: fraud + uncovered paid", "-", eur(err35["paid"]), "")
+    rep.note("Error cost, 35%: desk fraud on the same claims", "-", eur(err35["desk_fraud"]), "")
+    rep.note("Error cost, 35%: wrong denials avoided", "-",
+             f"{err35['denials']} = {eur(err35['denials_cost'])}", "")
     recorded_fraud = sum(r["label_recorded"] == "fraud" for r in small)
     rep.note("Fraud share: recorded labels vs truth", "4%",
              f"{pct(recorded_fraud / n)} recorded", "labels see only what the fraud desk looked at")

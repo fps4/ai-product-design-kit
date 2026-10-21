@@ -8,7 +8,7 @@ version: blank
 companion: six-failure-checklist.md · brief-template.claims.md (filled in for the running case)
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Paper Move 6 (the four parts, the six failures) · Google DORA, State of AI-assisted Software Development 2025 (user-centric focus)"
+sources: "Paper Part 8, *make the brief precise enough to build from* (the four parts, the six failures) · Google DORA, State of AI-assisted Software Development 2025 (user-centric focus)"
 ---
 
 # Brief template

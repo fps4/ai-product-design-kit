@@ -8,7 +8,7 @@ version: blank
 companion: brief-template.md · six-failure-checklist.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Paper Move 6 (For Product Owners)"
+sources: "Paper Part 8, *make the brief precise enough to build from* (For Product Owners)"
 ---
 
 # Copilot instructions for Product Owners

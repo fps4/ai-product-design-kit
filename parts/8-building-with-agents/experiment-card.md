@@ -8,7 +8,7 @@ version: blank
 companion: readout-assistant.md · team-pulse-survey.md · kit docs/loop-1.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-17 (moved from templates/ 2026-10-20)
-sources: "Paper Move 9 · DORA, Choosing measurement frameworks to fit your organizational goals (2025) — the plan-do-check-adjust loop"
+sources: "Paper Part 8, *measure the delivery system, not the people* · DORA, Choosing measurement frameworks to fit your organizational goals (2025) — the plan-do-check-adjust loop"
 ---
 
 # Experiment card

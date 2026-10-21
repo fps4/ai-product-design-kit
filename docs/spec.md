@@ -14,8 +14,8 @@ related:
 ## 1. Why
 
 Part 8 of the storyline *AI Product Design* — *Building it with agents, from personal copilot to
-organizational capability*, the paper's Moves 6–9 — argues four things an engineering organization can
-act on:
+organizational capability*, the paper's four Part 8 moves — argues four things an engineering
+organization can act on:
 
 1. AI raised individual output; delivery as a system did not keep up, and instability rose. **Measure
    it on your own estate before you argue about it.**
@@ -48,7 +48,7 @@ These hold in every part and every release. A change that breaks one is rejected
 | I-1 | **Nothing leaves the organization.** The kit runs in the user's CI or on their laptop, reads their git host with their token, and writes files. No telemetry, no hosted service | ADR-0001 |
 | I-2 | **No output identifies an individual.** Aggregates are per team; a group smaller than `min_group_size` (default 5 authors) is suppressed. No per-person table, export or debug mode | ADR-0002; AI Act Annex III 4(b) |
 | I-3 | **Deterministic checks only.** No model call in `lint`, `gate` or `evidence` | A gate must be explainable and repeatable |
-| I-4 | **Only humans approve.** An account that is a bot, a GitHub App, or listed in `agents:` never satisfies an approval requirement. The kit never approves anything itself | Paper Move 8, rule 1 |
+| I-4 | **Only humans approve.** An account that is a bot, a GitHub App, or listed in `agents:` never satisfies an approval requirement. The kit never approves anything itself | Paper Part 8, *approve the spec, gate the code*, rule 1 |
 | I-5 | **Unknown is reported as unknown.** If a metric's source is not configured or not available, the report says so; it never estimates or substitutes | Paper, *What this does not claim* |
 | I-6 | **Each part works alone.** Measure needs no brief; Brief needs no gate; Gate works without Evidence | Adoption in any order |
 | I-7 | **Read-only by default.** `measure`, `lint` and `evidence` need read scopes only. `gate` writes only a check run and, optionally, one PR comment | Least privilege |
@@ -194,7 +194,8 @@ Free text: context, background, links. The checks read the front-matter, not thi
 
 ### 6.2 The linter (`whosigns lint <path…>`)
 
-Six deterministic rules, one per failure in the paper's Move 6 table. Each finding has an id, the field, a
+Six deterministic rules, one per failure in the six-failure table of the paper's Part 8
+(*make the brief precise enough to build from*). Each finding has an id, the field, a
 plain-language message for the author, and what an agent would otherwise do.
 
 | Rule | Fails when | Message (example) |

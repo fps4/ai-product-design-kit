@@ -8,7 +8,7 @@ version: blank
 companion: kit docs/spec.md §5.5 (whosigns measure --survey, specified, not built) · experiment-card.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Paper Move 9 · DORA, Choosing measurement frameworks to fit your organizational goals (2025)"
+sources: "Paper Part 8, *measure the delivery system, not the people* · DORA, Choosing measurement frameworks to fit your organizational goals (2025) · WOR Art. 27(1)(l)"
 ---
 
 # Team pulse survey
@@ -28,8 +28,8 @@ common misconception that logs-based metrics are objective.*
 - **Same questions, same time of the period.** Ask in the last two weeks of the baseline quarter and of
   the current quarter, or at the start and end of an experiment.
 - **Say why you ask, and what you will do with it.** Share the team results with the team first.
-- **In the Netherlands, involve the works council** before measuring teams, even at team level.
-  <!-- TO CONFIRM: evidence R10 (WOR Art. 27(1)(l)) -->
+- **In the Netherlands, involve the works council** before measuring teams, even at team level
+  (WOR Art. 27(1)(l)).
 
 ## The questions
 

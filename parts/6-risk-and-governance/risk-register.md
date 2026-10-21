@@ -37,7 +37,7 @@ Answer by **what the system is used for**, not by which model it uses.
 |---|---|---|
 | Is the use on the AI Act's **prohibited** list? | *Yes / no* | |
 | Is the use on the AI Act's **high-risk** list (Annex III), or a safety component of a regulated product (Annex I)? | *Yes / no — name the point* | *e.g. life and health insurance pricing is listed; property claims handling is not* |
-| Does it **talk to people or generate text** they will read? | *Yes / no* | *Transparency duties may apply* |
+| Does it **talk to people or generate text** they will read? | *Yes / no* | *AI Act Art. 50(1) applies if it talks with people directly (a chat assistant); otherwise, telling people is your design choice* |
 | Does it make a decision **solely by automated means** that significantly affects a person? | *Yes / no* | *If yes: who intervenes, how does the person contest it?* |
 | Does any output **evaluate staff**? | *Yes / no* | *Rating individual workers' performance is a high-risk use* |
 | Which **sector rules and supervisor expectations** apply? | *List* | *e.g. a sector code of conduct, the supervisor's opinion on AI* |

@@ -8,7 +8,7 @@ version: blank
 companion: who-signs-matrix.claims.md (filled in for the running case)
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Paper Move 8 · Delegated Regulation (EU) 2024/1774 Art. 17(1) · Parasuraman & Manzey 2010 (automation bias)"
+sources: "Paper Part 8, *approve the spec, gate the code* · Delegated Regulation (EU) 2024/1774 Art. 17(1) · Parasuraman & Manzey 2010 (automation bias)"
 ---
 
 # Who signs?

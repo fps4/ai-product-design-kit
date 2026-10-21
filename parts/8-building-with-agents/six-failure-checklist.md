@@ -8,7 +8,7 @@ version: blank
 companion: brief-template.md · brief-template.claims.md
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: "Paper Move 6 · kit docs/spec.md §6.2 (lint rules B1–B6)"
+sources: "Paper Part 8, *make the brief precise enough to build from* · kit docs/spec.md §6.2 (lint rules B1–B6)"
 ---
 
 # The six ways a brief fails

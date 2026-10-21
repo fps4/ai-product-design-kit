@@ -7,7 +7,7 @@ forms: Word + PDF (built from this source)
 version: blank
 licence: CC BY 4.0 · AI Product Design · faridgurbanov.com
 status: Draft v0.1 · 2026-10-20
-sources: AI Product Design paper, Move 3 (make the pilot able to go live)
+sources: AI Product Design paper, Part 4, the readiness gates (*make the pilot able to go live*)
 ---
 
 # Readiness scorecard
